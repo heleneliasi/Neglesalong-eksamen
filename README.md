@@ -8,7 +8,7 @@ I dag må mange kunder bestille time ved å sende DM på Instagram. Dette kan f�
 Målgruppen er personer som regelmessig tar manikyr eller andre neglbehandlinger. Løsningen er laget for både kunder og negleteknikere, siden den forenkler kommunikasjon, sparer tid og gir en bedre opplevelse for begge parter.
 
 
-## Hva jeg skal gjøre på Eksamensdagen
+## Hva jeg skal gjøre på eksamensdagen
 Jeg skal lage en admin og brukerside, sørge for at man må være innlogget for å sende inn spørsmål, oppdatere FAQ, implementere GDPR-funksjonalitet (mulighet for å slette sin egen bruker).
 (legg til link til ferdig kanban for eksamensdagen)
 
