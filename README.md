@@ -1,4 +1,4 @@
-## Prosjektbeskrivelse og dokumentasjon
+# Prosjektbeskrivelse og dokumentasjon
 ## Neglesalong – Timebestillingssystem
 
 ## 1. Prosjektidé og problemstilling
