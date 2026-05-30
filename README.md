@@ -43,7 +43,7 @@ IP-adresser: ()
 Porter: ()
 Brannmurregler: ()
 
-Klient → Flask/Waitress → MariaDB
+Klient -> Flask/Waitress -> MariaDB
 
 ### Tjenestekonfigurasjon
 systemctl
