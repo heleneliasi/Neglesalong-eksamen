@@ -1,5 +1,3 @@
-# Neglesalong-eksamen
-
 ## Prosjektbeskrivelse og dokumentasjon
 ## Neglesalong – Timebestillingssystem
 
