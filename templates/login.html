@@ -32,11 +32,11 @@
             Ingen bruker? <a href="/registrer">Registrer deg</a>
         </p>
     </div>
-    
+
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}
-            <p>{{ message }}</p>
+            <p style="margin-top: 20px;">{{ message }}</p>
         {% endfor %}
     {% endif %}
 {% endwith %}
