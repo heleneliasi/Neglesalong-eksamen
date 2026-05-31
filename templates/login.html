@@ -7,7 +7,17 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-       <div class="logo">
+Nei, her er hele login.html:
+html<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nailicous - Logg inn</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="logo">
         <a href="/">
             <img src="{{ url_for('static', filename='images/Nailicous.svg') }}" alt="Nailicous with a cursive font and a strawberry stem on the u">
         </a>  
@@ -31,16 +41,16 @@
         <p>
             Ingen bruker? <a href="/registrer">Registrer deg</a>
         </p>
-    </div>
 
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <ul>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-      </ul>
-    {% endif %}
-{% endwith %}
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <ul>
+                {% for message in messages %}
+                  <li>{{ message }}</li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
 </body>
 </html>
