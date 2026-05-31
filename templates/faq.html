@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    Her er faq.html:
+html<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nailicious.no - FAQ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+   <div class="logo">
+        <a href="/">
+            <img src="{{ url_for('static', filename='images/Nailicous.svg') }}" alt="Nailicous with a cursive font and a strawberry stem on the u">
+        </a>
+    </div>
+
+    <div class="subtitle">
+        <h1>Ofte stilte spørsmål</h1>
+    </div>
+
+    <div class="faq-container">
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Hvor lang tid tar en behandling? <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>En behandling tar vanligvis 60–90 minutter.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Kan jeg avbestille timen? <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Kun senest 24 timer før, ta kontakt så tidlig som mulig.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Hva koster ekstra design? <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Prisen varierer etter forespørsel.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Hvilke betalingsmetoder godtar dere? <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Vi godtar Vipps, kort og kontanter.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-question" onclick="toggleFaq(this)">
+                Hvor ligger salongen? <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+                <p>Alnabru (Strømsveien 245, 0668 Oslo)</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="book-button2">
+        <a href="/sendinn">Send inn et spørsmål</a>
+    </div>
+
+    <script>
+        function toggleFaq(button) {
+            const answer = button.nextElementSibling;
+            const icon = button.querySelector('.faq-icon');
+            answer.classList.toggle('open');
+            icon.textContent = answer.classList.contains('open') ? '−' : '+';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bekreftelse</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="logo">
+        <a href="/">
+            <img src="{{ url_for('static', filename='images/Nailicous.svg') }}" alt="Nailicous with a cursive font and a strawberry stem on the u">
+        </a>  
+    </div>
+
+    <div class="tittel"><h1>Bestilling bekreftet</h1></div>
+    <div class="booking">
+        <p>Tusen takk for bestillingen, {{ navn }}!</p>
+        <p>Vi gleder oss til å se deg</p>
+    </div><br>
+    <p>Tjeneste: {{ tjeneste }}</p>
+    <p>Dato: {{ dato }}</p>
+    <p>Tid: {{ tid }}</p>
+
+    <div class="book-button">
+        <a href="/">Tilbake til forsiden</a>
+    </div>
+</body>
+</html>
