@@ -7,7 +7,18 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-     <div class="logo">
+     Ok jeg ser problemet! I book.html er flash-meldingen utenfor .booking div-en. Flytt den inn, og fjern .login ul fra CSS siden du allerede har den globale ul regelen.
+Her er fikset book.html:
+html<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bestill time</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="logo">
         <a href="/">
             <img src="{{ url_for('static', filename='images/Nailicous.svg') }}" alt="Nailicous med kursiv font og jordbærstilk på u">
         </a>  
@@ -44,16 +55,16 @@
         <p>
             Bestilt time før? <a href="/login">Logg inn her</a>
         </p>
-    </div>
 
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <ul>
-                {% for message in messages %}
-                    <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    {% endwith %}
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
 </body>
 </html>
