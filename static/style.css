@@ -17,7 +17,6 @@ body {
     height: auto;
 }
 
-
 .button {
     display: flex;
     gap: 100px;
@@ -39,7 +38,6 @@ body {
     background-color: #e07d7d;
 }
 
-
 .subtitle {
     background-color: #e89999;
     color: white;
@@ -53,6 +51,11 @@ body {
 .subtitle p {
     margin: 0;
     font-size: 20px;
+}
+
+.subtitle h1 {
+    margin: 0;
+    font-size: 25px;
 }
 
 .services-grid {
@@ -95,6 +98,21 @@ body {
     margin: -50px 0 -50px 0;
 }
 
+.book-button a {
+    background-color: #d16b6b;
+    color: white;
+    padding: 15px 50px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 18px;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.book-button a:hover {
+    background-color: #c55555;
+}
+
 .book-button2 {
     margin: 20px 0 20px 0;
 }
@@ -112,35 +130,6 @@ body {
 
 .book-button2 a:hover {
     background-color: #c55555;
-}
-
-.book-button a {
-    background-color: #d16b6b;
-    color: white;
-    padding: 15px 50px;
-    text-decoration: none;
-    border-radius: 25px;
-    font-size: 18px;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-}
-
-.book-button a:hover {
-    background-color: #c55555;
-}
-
-.back-link {
-    color: blue;
-    text-decoration: underline;
-    display: inline-block;
-    margin-top: 10px;
-}
-
-/* Log in */
-
-.subtitle h1 {
-    margin: 0;
-    font-size: 25px;
 }
 
 .login {
@@ -172,12 +161,12 @@ body {
     font-size: 20px;
 }
 
-.login p{
-    font-size: 20px;
-}
-
 .login button:hover {
     background-color: #c55555;
+}
+
+.login p {
+    font-size: 20px;
 }
 
 .login a {
@@ -185,8 +174,17 @@ body {
     font-weight: bold;
 }
 
-/* Registrer page bruker også log in css */
-/* Book page */
+.login textarea {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    width: 200px;
+    margin-left: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    resize: vertical;
+}
+
 .booking {
     background-color: #e89999;
     color: white;
@@ -197,7 +195,7 @@ body {
     margin-top: 40px;
 }
 
-.booking p{
+.booking p {
     font-size: 20px;
 }
 
@@ -234,21 +232,17 @@ body {
     font-weight: bold;
 }
 
-
-
-
-/* FAQ  */
 .faq-container {
     max-width: 700px;
     margin: 30px auto;
     text-align: left;
 }
- 
+
 .faq-item {
     border-bottom: 1px solid #f0c0c0;
     margin-bottom: 5px;
 }
- 
+
 .faq-question {
     width: 100%;
     background: none;
@@ -263,70 +257,43 @@ body {
     align-items: center;
     text-align: left;
 }
- 
+
 .faq-question:hover {
     color: #e89999;
 }
- 
+
 .faq-icon {
     font-size: 24px;
     color: #e89999;
     flex-shrink: 0;
     margin-left: 10px;
 }
- 
+
 .faq-answer {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease, padding 0.3s ease;
     padding: 0 10px;
 }
- 
+
 .faq-answer.open {
     max-height: 200px;
     padding: 0 10px 15px 10px;
 }
- 
+
 .faq-answer p {
     margin: 0;
     font-size: 16px;
     color: #555;
 }
- 
+
 .faq-send-section {
     text-align: center;
     margin: 40px 0 30px 0;
 }
- 
+
 .faq-send-section p {
     font-size: 18px;
     color: #5a2020;
     margin-bottom: 15px;
-}
- 
-.book-button-link {
-    background-color: #d16b6b;
-    color: white;
-    padding: 15px 50px;
-    text-decoration: none;
-    border-radius: 25px;
-    font-size: 18px;
-    display: inline-block;
-    transition: background-color 0.3s ease;
-}
- 
-.book-button-link:hover {
-    background-color: #c55555;
-}
- 
-/* Textarea i send-spørsmål */
-.login textarea {
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    width: 200px;
-    margin-left: 10px;
-    font-family: Arial, sans-serif;
-    font-size: 14px;
-    resize: vertical;
 }

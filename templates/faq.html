@@ -7,16 +7,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    Her er faq.html:
-html<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nailicious.no - FAQ</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-</head>
-<body>
    <div class="logo">
         <a href="/">
             <img src="{{ url_for('static', filename='images/Nailicous.svg') }}" alt="Nailicous with a cursive font and a strawberry stem on the u">
@@ -78,13 +68,6 @@ html<!DOCTYPE html>
         <a href="/sendinn">Send inn et spørsmål</a>
     </div>
 
-    <script>
-        function toggleFaq(button) {
-            const answer = button.nextElementSibling;
-            const icon = button.querySelector('.faq-icon');
-            answer.classList.toggle('open');
-            icon.textContent = answer.classList.contains('open') ? '−' : '+';
-        }
-    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
