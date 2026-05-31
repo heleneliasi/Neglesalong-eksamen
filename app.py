@@ -64,7 +64,9 @@ def login_registrer():
 
 
 
-
+@app.route("/faq")
+def faq():
+    return render_template("faq.html")
 
 
 
