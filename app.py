@@ -11,9 +11,11 @@ load_dotenv(dotenv_path)  #last .env fila
 app = Flask(__name__)
 app.secret_key = os.getenv("SECRET_KEY", "backup_nøkkel")
 
+
 @app.route('/')
 def index():
      return render_template('index.html')
+
 
 @app.route("/services", methods=["GET", "POST"])
 def services_side():
@@ -22,10 +24,70 @@ def services_side():
      cursor.execute("SELECT * FROM service")
      services = cursor.fetchall()
      mydb.close()
-     return render_template("service.html", services=services)
+     return render_template("services.html", services=services)
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        email = request.form["email"]
+        passord = request.form["password"]
+
+        mydb = get_connection()
+        cursor = mydb.cursor()
+
+        cursor.execute(
+            "SELECT id, username, password FROM users WHERE email=%s",
+            (email,)
+        )
+        user = cursor.fetchone()
+        mydb.close()
+
+        if user and check_password_hash(user[2], passord):
+            session["user_id"] = user[0]
+            session["username"] = user[1]
+            flash("Velkommen tilbake!")
+            return redirect("/book")
+        
+        flash("Feil email eller passord")
+
+    return render_template("login.html")
+
+
+@app.route("/registrer", methods=["GET", "POST"])
+def registrer():
+    if request.method == "POST":
+        navn = request.form["navn"]
+        email = request.form["email"]
+        passord = generate_password_hash(request.form["password"])
+
+        mydb = get_connection()
+        cursor = mydb.cursor()
+
+        cursor.execute("SELECT id FROM users WHERE email=%s", (email,))
+        existing = cursor.fetchone()
+
+        if existing:
+            flash("Email finnes allerede. Logg inn i stedet.")
+            return redirect("/login")
+        
+        cursor.execute(
+            "INSERT INTO users (username, email, password) VALUES (%s,%s,%s)",
+            (navn, email, passord)
+        )
+        mydb.commit()
+
+        session["user_id"] = cursor.lastrowid
+        session["username"] = navn
+
+        flash("Bruker opprettet! Du er nå innlogget.")
+        return redirect("/book")
+
+    return render_template("registrer.html")
+
 
 @app.route("/book", methods=["GET", "POST"])
-def login_registrer():
+def book_side():
      if "user_id" not in session:
           flash("Du må logge inn for å bestille time")
           return redirect("/login")
@@ -62,13 +124,41 @@ def login_registrer():
      return render_template("book.html", services=services)
 
 
-
-
 @app.route("/faq")
 def faq():
     return render_template("faq.html")
 
 
+@app.route("/sendinn", methods=["GET", "POST"])
+def sendinn():
+    if request.method == "POST":
+        navn = request.form.get("navn", "").strip()
+        email = request.form.get("email", "").strip()
+        sporsmal = request.form.get("sporsmal", "").strip()
+
+        if not sporsmal:
+            flash("Du må skrive inn et spørsmål.")
+            return redirect("/sendinn")
+        
+        mydb = get_connection()
+        cursor = mydb.cursor()
+        cursor.execute(
+            "INSERT INTO questions (name, email, question) VALUES (%s, %s, %s)",
+            (navn, email, sporsmal)
+        )
+        mydb.commit()
+        mydb.close()
+
+        flash("Takk! Spørsmålet ditt er sendt")
+        return redirect("/faq")
+    
+    return render_template("sendinn.html")
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")
 
 
 
