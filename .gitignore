@@ -1,0 +1,27 @@
+#Environment (passord)
+.env
+*.env
+
+#Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+#Virtuelt env
+.venv/
+venv/
+env/
+ENV/
+
+#VS Code/JetBrains
+.vscode/
+.idea/
+
+#flask/Werkzeug
+instance/
+*.db
+*.sqlite3
+
+# logs
+*.log
+logs/
