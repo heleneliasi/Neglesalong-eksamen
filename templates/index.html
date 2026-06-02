@@ -7,14 +7,15 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-        <div class="topbar">
-    {% if session.get("user_id") %}
-        <a href="/minside">Min side</a>
-    {% else %}
-        <a href="/login">Logg inn</a>
-    {% endif %}
-</div>
-        <div class="logo">
+ <div class="topbar">
+        {% if session.get("user_id") %}
+            <a href="/minside">Min side</a>
+        {% else %}
+            <a href="/login">Logg inn</a>
+        {% endif %}
+    </div>
+
+    <div class="logo">
         <a href="/">
             <img src="{{ url_for('static', filename='images/Nailicous.svg') }}" alt="Nailicous with a cursive font and a strawberry stem on the u">
         </a>  
@@ -26,13 +27,7 @@
     </div>
 
     <div class="book-button">
-            <a href="/login">Logg inn</a>
-        {% endif %}
-    </div>
-
-    <div class="book-button">
         <a href="/faq">FAQ</a>
     </div>
-    
 </body>
 </html>
