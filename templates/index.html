@@ -19,6 +19,14 @@
     </div>
 
     <div class="book-button">
+        {% if session.get("user_id") %}
+            <a href="/minside">Min side</a>
+        {% else %}
+            <a href="/login">Logg inn</a>
+        {% endif %}
+    </div>
+
+    <div class="book-button">
         <a href="/faq">FAQ</a>
     </div>
     
