@@ -314,10 +314,10 @@ ul {
 .topbar a {
     background-color: #d16b6b;
     color: white;
-    padding: 10px 20px;
+    padding: 15px 30px;
     text-decoration: none;
     border-radius: 25px;
-    font-size: 16px;
+    font-size: 22px;
     transition: background-color 0.3s ease;
 }
 
