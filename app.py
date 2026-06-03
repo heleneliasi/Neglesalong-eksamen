@@ -201,6 +201,38 @@ def sendinn():
     
     return render_template("sendinn.html")
 
+@app.route("/slettbruker", methods=["GET", "POST"])
+def slettbruker():
+    if request.method == "POST":
+        email = request.form["email"]
+        passord = request.form["password"]
+
+        mydb = get_connection()
+        cursor = mydb.cursor()
+
+        cursor.execute(
+            "SELECT id, password FROM users WHERE email=%s",
+            (email,)
+        )
+        user = cursor.fetchone()
+
+        if user and check_password_hash(user[1], passord):
+            cursor.execute("DELETE FROM appointment WHERE user_id=%s", (user[0],))
+            cursor.execute("DELETE FROM users WHERE id=%s", (user[0],))
+            mydb.commit()
+            mydb.close()
+            session.clear()
+            return redirect("/slettet")
+        
+        mydb.close()
+        flash("Feil email eller passord")
+
+    return render_template("slettbruker.html")
+
+@app.route("/slettet")
+def slettet():
+    return render_template("slettet.html")
+
 
 @app.route("/logout")
 def logout():

@@ -363,3 +363,8 @@ ul {
 .admin-box th {
     font-weight: bold;
 }
+
+.faq-answer a {
+    color: #5a2020;
+    font-weight: bold;
+}
