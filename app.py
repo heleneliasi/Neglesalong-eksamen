@@ -56,6 +56,29 @@ def login():
 
     return render_template("login.html")
 
+
+@app.route("/minside")
+def minside():
+    if "user_id" not in session:
+        return redirect("/login")
+    
+    mydb = get_connection()
+    cursor = mydb.cursor()
+
+    cursor.execute(
+        "SELECT service.name, appointment.date, appointment.time "
+        "FROM appointment "
+        "JOIN service ON appointment.service_id = service.id "
+        "WHERE appointment.user_id = %s",
+        (session["user_id"],)
+    )
+    timer = cursor.fetchall()
+    mydb.close()
+
+    return render_template("minside.html", timer=timer, navn=session["username"])
+
+
+
 @app.route("/admin")
 def admin():
     if "user_id" not in session or session.get("role") != "admin":

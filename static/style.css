@@ -324,3 +324,42 @@ ul {
 .topbar a:hover {
     background-color: #c55555;
 }
+
+
+
+
+.admin-grid {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    margin: 40px auto;
+    max-width: 1200px;
+    flex-wrap: wrap;
+}
+
+.admin-box {
+    background-color: #e89999;
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    min-width: 400px;
+}
+
+.admin-box h2 {
+    margin-top: 0;
+}
+
+.admin-box table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.admin-box th, .admin-box td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #d16b6b;
+}
+
+.admin-box th {
+    font-weight: bold;
+}
