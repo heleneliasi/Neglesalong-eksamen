@@ -61,6 +61,8 @@ def login():
 def minside():
     if "user_id" not in session:
         return redirect("/login")
+    if session.get("role") == "admin":
+        return redirect("/admin")
     
     mydb = get_connection()
     cursor = mydb.cursor()
@@ -83,8 +85,6 @@ def minside():
 def admin():
     if "user_id" not in session or session.get("role") != "admin":
         return redirect("/login")
-    if session.get("role") == "admin":
-        return redirect("/admin")
     
     mydb = get_connection()
     cursor = mydb.cursor()
