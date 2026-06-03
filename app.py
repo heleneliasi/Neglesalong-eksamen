@@ -37,7 +37,7 @@ def login():
         cursor = mydb.cursor()
 
         cursor.execute(
-            "SELECT id, username, password FROM users WHERE email=%s",
+            "SELECT id, username, password, role FROM users WHERE email=%s",
             (email,)
         )
         user = cursor.fetchone()
