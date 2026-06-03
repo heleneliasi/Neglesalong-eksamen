@@ -46,13 +46,37 @@ def login():
         if user and check_password_hash(user[2], passord):
             session["user_id"] = user[0]
             session["username"] = user[1]
+            session["role"] == user[3]
             flash("Velkommen tilbake!")
-            return redirect("/book")
+            if session["role"] == "admin":
+                return redirect("/admin")
+            return redirect("/minside")
         
         flash("Feil email eller passord")
 
     return render_template("login.html")
 
+@app.route("/admin")
+def admin():
+    if "user_id" not in session or session.get("role") != "admin":
+        return redirect("/login")
+    
+    mydb = get_connection()
+    cursor = mydb.cursor()
+
+    cursor.execute(
+        "SELECT appointment.id, users.username, service.name, appointment.date, appointment.time "
+        "FROM appointment "
+        "JOIN users ON appointment.user_id = users.id "
+        "JOIN service ON appointment.service_id = service.id"
+    )
+    timer = cursor.fetchall()
+
+    cursor.execute("SELECT * FROM questions")
+    sporsmal = cursor.fetchall()
+
+    mydb.close()
+    return render_template("admin.html", timer=timer, sporsmal=sporsmal)
 
 @app.route("/registrer", methods=["GET", "POST"])
 def registrer():
