@@ -46,7 +46,7 @@ def login():
         if user and check_password_hash(user[2], passord):
             session["user_id"] = user[0]
             session["username"] = user[1]
-            session["role"] == user[3]
+            session["role"] = user[3]
             flash("Velkommen tilbake!")
             if session["role"] == "admin":
                 return redirect("/admin")
