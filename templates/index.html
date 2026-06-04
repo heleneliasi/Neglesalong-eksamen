@@ -8,11 +8,11 @@
 </head>
 <body>
     <div class="topbar">
-        {{% if session.get("user_id") %}}
-        <a href="/minside"></a>
-        {{% else %}}
-        <a href="/login"></a>
-        {{% endif %}}
+        {% if session.get("user_id") %}
+            <a href="/minside"></a>
+        {% else %}
+            <a href="/login"></a>
+        {% endif %}
     </div>
 
 
