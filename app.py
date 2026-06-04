@@ -70,7 +70,7 @@ def admin():
         "JOIN users ON appointment.user_id = users.id "
         "JOIN service ON appointment.service_id = service.id"
     )
-
+    
 
 
 @app.route("/minside")
