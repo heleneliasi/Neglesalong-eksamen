@@ -57,52 +57,6 @@ def login():
     return render_template("login.html")
 
 
-@app.route("/minside")
-def minside():
-    if "user_id" not in session:
-        return redirect("/login")
-    if session.get("role") == "admin":
-        return redirect("/admin")
-    
-    mydb = get_connection()
-    cursor = mydb.cursor()
-
-    cursor.execute(
-        "SELECT service.name, appointment.date, appointment.time "
-        "FROM appointment "
-        "JOIN service ON appointment.service_id = service.id "
-        "WHERE appointment.user_id = %s",
-        (session["user_id"],)
-    )
-    timer = cursor.fetchall()
-    mydb.close()
-
-    return render_template("minside.html", timer=timer, navn=session["username"])
-
-
-
-@app.route("/admin")
-def admin():
-    if "user_id" not in session or session.get("role") != "admin":
-        return redirect("/login")
-    
-    mydb = get_connection()
-    cursor = mydb.cursor()
-
-    cursor.execute(
-        "SELECT appointment.id, users.username, service.name, appointment.date, appointment.time "
-        "FROM appointment "
-        "JOIN users ON appointment.user_id = users.id "
-        "JOIN service ON appointment.service_id = service.id"
-    )
-    timer = cursor.fetchall()
-
-    cursor.execute("SELECT * FROM questions")
-    sporsmal = cursor.fetchall()
-
-    mydb.close()
-    return render_template("admin.html", timer=timer, sporsmal=sporsmal)
-
 @app.route("/registrer", methods=["GET", "POST"])
 def registrer():
     if request.method == "POST":
@@ -231,6 +185,79 @@ def slettbruker():
 
     return render_template("slettbruker.html")
 
+@app.route("/logout")
+def loggut():
+    session.clear()
+    return redirect("/")
+
+
+
+
 if __name__ == '__main__':
     serve(app, host='0.0.0.0', port=8080)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# forsøk på admin og minside @app.route("/minside")
+# def minside():
+#     if "user_id" not in session:
+#         return redirect("/login")
+#     if session.get("role") == "admin":
+#         return redirect("/admin")
+    
+#     mydb = get_connection()
+#     cursor = mydb.cursor()
+
+#     cursor.execute(
+#         "SELECT service.name, appointment.date, appointment.time "
+#         "FROM appointment "
+#         "JOIN service ON appointment.service_id = service.id "
+#         "WHERE appointment.user_id = %s",
+#         (session["user_id"],)
+#     )
+#     timer = cursor.fetchall()
+#     mydb.close()
+
+#     return render_template("minside.html", timer=timer, navn=session["username"])
+
+
+
+# @app.route("/admin")
+# def admin():
+#     if "user_id" not in session or session.get("role") != "admin":
+#         return redirect("/login")
+    
+#     mydb = get_connection()
+#     cursor = mydb.cursor()
+
+#     cursor.execute(
+#         "SELECT appointment.id, users.username, service.name, appointment.date, appointment.time "
+#         "FROM appointment "
+#         "JOIN users ON appointment.user_id = users.id "
+#         "JOIN service ON appointment.service_id = service.id"
+#     )
+#     timer = cursor.fetchall()
+
+#     cursor.execute("SELECT * FROM questions")
+#     sporsmal = cursor.fetchall()
+
+#     mydb.close()
+#     return render_template("admin.html", timer=timer, sporsmal=sporsmal)
