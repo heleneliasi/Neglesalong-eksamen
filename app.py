@@ -70,7 +70,7 @@ def admin():
         "JOIN users ON appointment.user_id = users.id "
         "JOIN service ON appointment.service_id = service.id"
     )
-    
+
 
 
 
@@ -201,6 +201,12 @@ def slettbruker():
         flash("Feil email eller passord")
 
     return render_template("slettbruker.html")
+
+
+@app.route("/slettet")
+def slettet():
+    return render_template("slettet.html")
+
 
 @app.route("/logout")
 def loggut():
