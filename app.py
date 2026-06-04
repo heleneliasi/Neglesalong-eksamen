@@ -74,9 +74,9 @@ def admin():
     timer = cursor.fetchall
 
     cursor.execute("SELECT * FROM questions")
-
+    sporsmal = cursor.fetchall
     mydb.close()
-    return render_template("admin.html", timer=timer)
+    return render_template("admin.html", timer=timer, sporsmal=sporsmal)
 
 
 @app.route("/minside")
