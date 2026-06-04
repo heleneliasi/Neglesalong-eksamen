@@ -16,8 +16,31 @@
         </a>
     </div>
 
+<div class="subtitle">
+	        <h1>Hei, {{ navn }}!</h1>
+	    </div>
+	
+	    <div class="admin-box" style="max-width: 600px; margin: 40px auto;">
+	        <h2>Dine bestilte timer</h2>
+	        {% if timer %}
+	        <table>
+	            <tr>
+	                <th>Tjeneste</th>
+	                <th>Dato</th>
+	                <th>Tid</th>
+	            </tr>
+	            {% for time in timer %}
+	            <tr>
+	                <td>{{ time[0] }}</td>
+	                <td>{{ time[1] }}</td>
+	                <td>{{ time[2] }}</td>
+	            </tr>
+	            {% endfor %}
+	        </table>
+	        {% else %}
+	        <p>Du har ingen bestilte timer.</p>
+	        
+	    </div>
 
-
-    
 </body>
 </html>

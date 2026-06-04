@@ -73,9 +73,6 @@ def admin():
 
 
 
-
-
-
 @app.route("/minside")
 def minside():
     if "user_id" not in session:
