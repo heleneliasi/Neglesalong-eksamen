@@ -20,6 +20,45 @@
         <h1>Admin</h1>
     </div>
 
+    <div class="admin-grid">
+        <div class="admin-box">
+            <h2>Bestilte timer</h2>
+            <table>
+                <tr>
+                    <th>Kunde</th>
+                    <th>Tjeneste</th>
+                    <th>Dato</th>
+                    <th>Tid</th>
+                </tr>
+                {% for time in timer %}
+                <tr>
+                    <td>{{ time[1] }}</td>
+                    <td>{{ time[2] }}</td>
+                    <td>{{ time[3] }}</td>
+                    <td>{{ time[4] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+        <div class="admin-box">
+            <h2>Innsendte spørsmål</h2>
+            <table>
+                <tr>
+                    <th>Navn</th>
+                    <th>Email</th>
+                    <th>Spørsmål</th>
+                </tr>
+                {% for s in sporsmal %}
+                <tr>
+                    <td>{{ s[1] }}</td>
+                    <td>{{ s[2] }}</td>
+                    <td>{{ s[3] }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
 
 
 
