@@ -56,6 +56,7 @@ def login():
 
     return render_template("login.html")
 
+
 @app.route("/admin")
 def admin():
     if "user_id" not in session or session.get("role") != "admin":
@@ -70,7 +71,12 @@ def admin():
         "JOIN users ON appointment.user_id = users.id "
         "JOIN service ON appointment.service_id = service.id"
     )
-    
+    timer = cursor.fetchall
+
+    cursor.execute("SELECT * FROM questions")
+
+    mydb.close()
+    return render_template("admin.html", timer=timer)
 
 
 @app.route("/minside")
@@ -195,6 +201,7 @@ def sendinn():
         return redirect("/faq")
     
     return render_template("sendinn.html")
+
 
 @app.route("/slettbruker", methods=["GET", "POST"])
 def slettbruker():
