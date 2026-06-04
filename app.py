@@ -56,6 +56,23 @@ def login():
 
     return render_template("login.html")
 
+@app.route("/admin")
+def admin():
+    if "user_id" not in session or session.get("role") != "admin":
+        return redirect("/login")
+    
+    mydb = get_connection()
+    cursor = mydb.cursor()
+
+    cursor.execute(
+        "SELECT appointment.id, users.username, service.name, appointment.date, appointment.time "
+        "FROM appointment "
+        "JOIN users ON appointment.user_id = users.id "
+        "JOIN service ON appointment.service_id = service.id"
+    )
+    
+
+
 
 @app.route("/registrer", methods=["GET", "POST"])
 def registrer():
@@ -214,7 +231,8 @@ if __name__ == '__main__':
 
 
 
-# forsøk på admin og minside @app.route("/minside")
+# forsøk på admin og minside 
+# @app.route("/minside")
 # def minside():
 #     if "user_id" not in session:
 #         return redirect("/login")
