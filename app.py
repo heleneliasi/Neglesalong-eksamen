@@ -71,10 +71,10 @@ def admin():
         "JOIN users ON appointment.user_id = users.id "
         "JOIN service ON appointment.service_id = service.id"
     )
-    timer = cursor.fetchall
+    timer = cursor.fetchall()
 
     cursor.execute("SELECT * FROM questions")
-    sporsmal = cursor.fetchall
+    sporsmal = cursor.fetchall()
     mydb.close()
     return render_template("admin.html", timer=timer, sporsmal=sporsmal)
 
